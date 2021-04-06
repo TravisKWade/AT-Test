@@ -16,7 +16,7 @@ class APIService {
     
     class func getPlaces(location: CLLocationCoordinate2D, completion: @escaping ([Business]) -> Void) {
         
-        let url = URL(string:  "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyDIKzjfQQCahwJ9yEr8gBU9TqJ3MvbPXyY&type=food&radius=100&location=\(location.latitude),\(location.longitude)")
+        let url = URL(string:  "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyDIKzjfQQCahwJ9yEr8gBU9TqJ3MvbPXyY&type=restaurant&radius=5000&location=\(location.latitude),\(location.longitude)")
         let request = URLRequest(url: url!)
         
         let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -39,7 +39,7 @@ class APIService {
     }
     
     class func searchPlaces(searchString: String, completion: @escaping ([Business]) -> Void) {
-        let url = URL(string:  "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=AIzaSyDIKzjfQQCahwJ9yEr8gBU9TqJ3MvbPXyY&input=\(searchString)&inputtype=textquery&fields=geometry,place_id,name,rating,user_ratings_total,price_level&type=food")
+        let url = URL(string:  "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=AIzaSyDIKzjfQQCahwJ9yEr8gBU9TqJ3MvbPXyY&input=\(searchString)&inputtype=textquery&fields=geometry,place_id,name,rating,user_ratings_total,price_level&type=restaurant")
         let request = URLRequest(url: url!)
         
         let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in

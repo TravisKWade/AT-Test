@@ -86,9 +86,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, FilterDele
         
         APIService.searchPlaces(searchString: textField.text!.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!) { (businesses) in
             self.businesses = businesses
-            self.convertToMapView()
             
             DispatchQueue.main.async {
+                self.convertToMapView()
                 self.setupMapView()
             }
         }
@@ -138,7 +138,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, FilterDele
         if location != nil {
             centerToLocation(location!)
         } else {
-            centerToLocation(mapBusinesses[0].coordinate)
+            if mapBusinesses.count > 0 {
+                centerToLocation(mapBusinesses[0].coordinate)
+            }
         }
     }
     

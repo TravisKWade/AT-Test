@@ -23,6 +23,7 @@ class PlaceTableViewCell: UITableViewCell {
     
     var delegate: FavoriteDelegate?
     var business: Business?
+    var businessImage: UIImage?
     
     func setupCell(business: Business) {
         self.business = business
@@ -94,6 +95,24 @@ class PlaceTableViewCell: UITableViewCell {
         if let totalRating = business.user_ratings_total {
             ratingLabel.text = "(\(String(totalRating)))"
         }
+        
+        if businessImage == nil {
+            if let photoCollection = business.photos {
+                let photo = photoCollection[0]
+                
+                let url = URL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&photoreference=\(photo.photo_reference!)&key=AIzaSyDIKzjfQQCahwJ9yEr8gBU9TqJ3MvbPXyY")!
+                
+                getImageData(from: url) { data, response, error in
+                    guard let data = data, error == nil else { return }
+                    self.businessImage = UIImage(data: data)
+                    DispatchQueue.main.async() {
+                        self.lunchImage.image = self.businessImage
+                    }
+                }
+            }
+        } else {
+            lunchImage.image = businessImage
+        }
     }
     
     func setFavorite(isFavorite: Bool) {
@@ -116,5 +135,9 @@ class PlaceTableViewCell: UITableViewCell {
         }
         
         delegate?.favoritePressed(placeID: business!.place_id)
+    }
+    
+    func getImageData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
 }

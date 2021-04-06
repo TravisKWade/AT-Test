@@ -15,5 +15,6 @@ struct Business: Codable {
     var price_level: Int?
     var geometry: Geometry
     var vicinity: String?
+    var photos: [Photos]?
 }
 

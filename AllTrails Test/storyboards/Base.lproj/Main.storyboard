@@ -45,7 +45,7 @@
                                             <constraint firstAttribute="height" constant="36" id="J8E-a6-7Nt"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="kuS-32-d70" id="5Di-qA-zzj"/>
                                         </connections>
@@ -380,7 +380,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="lPa-ns-7N4"/>
+        <segue reference="cO2-1k-p1a"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="List Button" width="64" height="35"/>
