@@ -51,7 +51,6 @@ class APIService {
                     let businesses = try decoder.decode(Candidates.self, from: data!)
                     completion(businesses.candidates)
                 } catch {
-                    print(String(data: data!, encoding: .utf8))
                     print(error.localizedDescription)
                 }
             }

@@ -26,7 +26,7 @@
                             <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" image="heart" catalog="system"/>
                             <connections>
-                                <action selector="favoriteButtonPressedWithSender:" destination="iN0-l3-epB" eventType="touchUpInside" id="U3V-v7-gTm"/>
+                                <action selector="favoriteButtonPressedWithSender:" destination="iN0-l3-epB" eventType="touchUpInside" id="8YM-3f-dBf"/>
                             </connections>
                         </button>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="Cqe-Da-q0e">

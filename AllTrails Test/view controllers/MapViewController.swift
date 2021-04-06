@@ -82,16 +82,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, FilterDele
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         businesses.removeAll()
         searchTextField.resignFirstResponder()
+        mapView.removeAnnotations(mapView.annotations)
         
         APIService.searchPlaces(searchString: textField.text!.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!) { (businesses) in
             self.businesses = businesses
+            self.convertToMapView()
             
             DispatchQueue.main.async {
-                if businesses.count == 0 {
-                   
-                }
-            
-                
+                self.setupMapView()
             }
         }
         
@@ -120,8 +118,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, FilterDele
         } else {
             view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             view.canShowCallout = true
-            //view.calloutOffset = CGPoint(x: -5, y: 5)
-            view.image = UIImage(named: "StaticPin.png")
+            view.calloutOffset = CGPoint(x: -5, y: 5)
         }
 
         return view
@@ -138,7 +135,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, FilterDele
                                              coordinate: location))
         }
         
-        centerToLocation(mapBusinesses[0].coordinate)
+        if location != nil {
+            centerToLocation(location!)
+        } else {
+            centerToLocation(mapBusinesses[0].coordinate)
+        }
     }
     
     func setupMapView() {

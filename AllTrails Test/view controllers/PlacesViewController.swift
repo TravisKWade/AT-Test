@@ -89,88 +89,15 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return businesses.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let business: Business = businesses[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceCell", for: indexPath) as! PlaceTableViewCell
         
-        cell.containerView.layer.cornerRadius = 5
-        cell.containerView.layer.borderWidth = 1
-        cell.containerView.layer.borderColor = UIColor.lightGray.cgColor
+        cell.setupCell(business: business)
         cell.delegate = self
-        cell.business = business
         
-        cell.titleLabel.text = business.name
-        cell.detailLabel.text = ""
-        
-        if let price = business.price_level {
-            var levelText = ""
-            for _ in 0..<(price-1) {
-                levelText.append("$")
-            }
-            
-            cell.detailLabel.text = levelText
-        }
-        
-        cell.ratingLabel.text = ""
-        
-        if let rating = business.rating {
-            if rating > 4.9 {
-                cell.star1Image.tintColor = UIColor.systemYellow
-                cell.star2Image.tintColor = UIColor.systemYellow
-                cell.star3Image.tintColor = UIColor.systemYellow
-                cell.star4Image.tintColor = UIColor.systemYellow
-                cell.star5Image.tintColor = UIColor.systemYellow
-            } else if rating > 3.9 && rating < 5 {
-                cell.star1Image.tintColor = UIColor.systemYellow
-                cell.star2Image.tintColor = UIColor.systemYellow
-                cell.star3Image.tintColor = UIColor.systemYellow
-                cell.star4Image.tintColor = UIColor.systemYellow
-                cell.star5Image.tintColor = UIColor.systemGray3
-            } else if rating > 2.9 && rating < 4 {
-                cell.star1Image.tintColor = UIColor.systemYellow
-                cell.star2Image.tintColor = UIColor.systemYellow
-                cell.star3Image.tintColor = UIColor.systemYellow
-                cell.star4Image.tintColor = UIColor.systemGray3
-                cell.star5Image.tintColor = UIColor.systemGray3
-            } else if rating > 1.9 && rating < 3 {
-                cell.star1Image.tintColor = UIColor.systemYellow
-                cell.star2Image.tintColor = UIColor.systemYellow
-                cell.star3Image.tintColor = UIColor.systemGray3
-                cell.star4Image.tintColor = UIColor.systemGray3
-                cell.star5Image.tintColor = UIColor.systemGray3
-            } else if rating > 0.9 && rating < 2 {
-                cell.star1Image.tintColor = UIColor.systemYellow
-                cell.star2Image.tintColor = UIColor.systemGray3
-                cell.star3Image.tintColor = UIColor.systemGray3
-                cell.star4Image.tintColor = UIColor.systemGray3
-                cell.star5Image.tintColor = UIColor.systemGray3
-            } else {
-                cell.star1Image.tintColor = UIColor.systemGray3
-                cell.star2Image.tintColor = UIColor.systemGray3
-                cell.star3Image.tintColor = UIColor.systemGray3
-                cell.star4Image.tintColor = UIColor.systemGray3
-                cell.star5Image.tintColor = UIColor.systemGray3
-            }
-        } else {
-            cell.star1Image.tintColor = UIColor.white
-            cell.star2Image.tintColor = UIColor.white
-            cell.star3Image.tintColor = UIColor.white
-            cell.star4Image.tintColor = UIColor.white
-            cell.star5Image.tintColor = UIColor.white
-        }
-        
-        if let totalRating = business.user_ratings_total {
-            cell.ratingLabel.text = "(\(String(totalRating)))"
-        }
-        
-        if checkFavorite(placeID: business.place_id) {
-            cell.favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            cell.favoriteButton.tintColor = UIColor.systemGreen
-        } else {
-            cell.favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
-            cell.favoriteButton.tintColor = UIColor.systemGray3
-        }
+        cell.setFavorite(isFavorite: checkFavorite(placeID: business.place_id))
         
         return cell
     }

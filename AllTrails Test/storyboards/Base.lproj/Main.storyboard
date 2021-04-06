@@ -46,6 +46,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="kuS-32-d70" id="5Di-qA-zzj"/>
+                                        </connections>
                                     </textField>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Lcs-64-5C5">
                                         <rect key="frame" x="366" y="98" width="33" height="35"/>
@@ -69,7 +72,7 @@
                                                     <constraint firstAttribute="width" constant="85" id="Aoz-Vn-rd1"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
-                                                <color key="textColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -158,7 +161,7 @@
                                     <constraint firstAttribute="width" constant="189" id="WZt-NU-M34"/>
                                 </constraints>
                                 <state key="normal" title="Ratings Low to High">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="lowButtonPressedWithSender:" destination="aJj-BT-to1" eventType="touchUpInside" id="xCF-7H-L3i"/>
@@ -185,7 +188,7 @@
                                     <constraint firstAttribute="height" constant="30" id="uQM-YL-Ich"/>
                                 </constraints>
                                 <state key="normal" title="Ratings High to Low">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="highButtonPressedWithSender:" destination="aJj-BT-to1" eventType="touchUpInside" id="F1y-U0-KCW"/>
@@ -237,14 +240,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HSQ-E7-bhQ">
-                                <rect key="frame" x="10" y="163" width="394" height="733"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="9ZW-0B-uW5"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="RAR-6g-Mbi"/>
-                                </connections>
-                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="udN-v8-pse">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="155"/>
                                 <subviews>
@@ -292,7 +287,7 @@
                                                     <constraint firstAttribute="width" constant="85" id="L9e-zE-Bz4"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
-                                                <color key="textColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -323,6 +318,14 @@
                                     <constraint firstAttribute="trailing" secondItem="KYZ-SJ-yPY" secondAttribute="trailing" constant="15" id="nqF-Dp-dgo"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HSQ-E7-bhQ">
+                                <rect key="frame" x="10" y="163" width="394" height="733"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="9ZW-0B-uW5"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="RAR-6g-Mbi"/>
+                                </connections>
+                            </tableView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There were no results returned. Please try your search again." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sUS-kA-f20">
                                 <rect key="frame" x="91" y="391" width="231" height="115"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
