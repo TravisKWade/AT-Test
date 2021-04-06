@@ -27,7 +27,6 @@
 		1FDCFD72261BB5340011D2D2 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCFD71261BB5340011D2D2 /* FilterViewController.swift */; };
 		1FDCFD76261BBC180011D2D2 /* FilterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCFD75261BBC180011D2D2 /* FilterDelegate.swift */; };
 		1FDCFD79261BCAC50011D2D2 /* MapBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCFD78261BCAC50011D2D2 /* MapBusiness.swift */; };
-		1FDCFD8E261C7B0C0011D2D2 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCFD8D261C7B0C0011D2D2 /* UIImageView.swift */; };
 		1FDCFD91261C7B3F0011D2D2 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCFD90261C7B3F0011D2D2 /* Photos.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,7 +53,6 @@
 		1FDCFD71261BB5340011D2D2 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		1FDCFD75261BBC180011D2D2 /* FilterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDelegate.swift; sourceTree = "<group>"; };
 		1FDCFD78261BCAC50011D2D2 /* MapBusiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBusiness.swift; sourceTree = "<group>"; };
-		1FDCFD8D261C7B0C0011D2D2 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		1FDCFD90261C7B3F0011D2D2 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,7 +100,6 @@
 				1FD1528A26174EE800C8B5D0 /* AllTrails_Test.xcdatamodeld */,
 				1FD1528D26174EEB00C8B5D0 /* Assets.xcassets */,
 				1F049443261A6C0300855279 /* delegates */,
-				1FDCFD8C261C7AFB0011D2D2 /* extensions */,
 				1FD1529226174EEB00C8B5D0 /* Info.plist */,
 				1FD152AF261A244D00C8B5D0 /* models */,
 				1FD152A02618EFBF00C8B5D0 /* services */,
@@ -161,14 +158,6 @@
 				1FD152B3261A284500C8B5D0 /* Results.swift */,
 			);
 			path = models;
-			sourceTree = "<group>";
-		};
-		1FDCFD8C261C7AFB0011D2D2 /* extensions */ = {
-			isa = PBXGroup;
-			children = (
-				1FDCFD8D261C7B0C0011D2D2 /* UIImageView.swift */,
-			);
-			path = extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +247,6 @@
 				1F049445261A6C2200855279 /* FavoriteDelegate.swift in Sources */,
 				1FD1528426174EE800C8B5D0 /* SceneDelegate.swift in Sources */,
 				1FDCFD6E261AA5590011D2D2 /* Candidates.swift in Sources */,
-				1FDCFD8E261C7B0C0011D2D2 /* UIImageView.swift in Sources */,
 				1FD152B7261A288500C8B5D0 /* Geometry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
